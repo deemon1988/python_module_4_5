@@ -1,5 +1,4 @@
 import random
-from itertools import count
 
 nums = [4, 1, 4, 6, 2, 8, 2, 3, 9, 7, 8, 2, 3]
 
@@ -31,46 +30,46 @@ def selection_sort(ls):
         ls[i], ls[lowest] = ls[lowest], ls[i]
 
 
-selection_sort(nums)
-print(nums)
+# selection_sort(nums)
+# print(nums)
+
+if __name__ == "__main__":
+    def binary_search(area):
+        # global area
+        # area.sort()
+        numb = random.choice(area)
+        count = 0
+        search_value = 0
+        while search_value != numb:
+            search_index = (len(area) // 2)
+            search_value = area[search_index]
+            if search_value == numb:
+                print("it's number -", search_value)
+                print("число итераций", count)
+                break
+            elif search_value < numb:
+                area = area[search_index:]
+                count+=1
+            elif search_value > numb:
+                area = area[:search_index]
+                count += 1
+        return count
 
 
-def binary_search(area):
-    # global area
-    # area.sort()
-    numb = random.choice(area)
-    count = 0
-    search_value = 0
-    while search_value != numb:
-        search_index = (len(area) // 2)
-        search_value = area[search_index]
-        if search_value == numb:
-            print("it's number -", search_value)
-            print("число итераций", count)
-            break
-        elif search_value < numb:
-            area = area[search_index:]
-            count+=1
-        elif search_value > numb:
-            area = area[:search_index]
-            count += 1
-    return count
-
-
-is_count = False
-for i in range(1,10):
-    search_list =list(range(1,4000001))
-    count = binary_search(search_list)
-    while not is_count:
-        countmax = count
-        countmin = count
-        is_count = True
-    if count>countmax:
-        countmax = count
-    if  count<countmin:
-        countmin = count
+    is_count = False
+    for i in range(1,10):
+        search_list =list(range(1,4000001))
+        count = binary_search(search_list)
+        while not is_count:
+            countmax = count
+            countmin = count
+            is_count = True
+        if count>countmax:
+            countmax = count
+        if  count<countmin:
+            countmin = count
 
 
 
-print("Максимум итераций:",countmax)
-print("Минимум итераций:",countmin)
+    print("Максимум итераций:",countmax)
+    print("Минимум итераций:",countmin)
