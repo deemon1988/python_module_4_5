@@ -21,7 +21,7 @@ def step(amount_items, n_heap):
         global heap3
         for i in range(0, amount_items):
             heap3.remove('*')
-
+ 
 
 def game():
     player = 0
