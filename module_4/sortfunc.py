@@ -2,6 +2,7 @@ import random
 
 nums = [4, 1, 4, 6, 2, 8, 2, 3, 9, 7, 8, 2, 3]
 
+
 def buble_sort(ls):
     # чтобы цикл сработал хотябы один раз, задаем значение переменной True
     swapped = True
@@ -13,6 +14,7 @@ def buble_sort(ls):
                 ls[i], ls[i + 1] = ls[i + 1], ls[i]
                 # меняем значение переменной swap для следующего повтора цикла
                 swapped = True
+
 
 # buble_sort(nums)
 # print(nums)
@@ -33,6 +35,18 @@ def selection_sort(ls):
 # selection_sort(nums)
 # print(nums)
 
+def insertion_sort(ls):
+    for i in range(1, len(ls)):
+        temp = ls[i]
+        j = i - 1
+        while j >= 0 and temp < ls[j]:
+            ls[j + 1] = ls[j]
+            j -= 1
+        ls[j + 1] = temp
+
+# insertion_sort(nums)
+# print(nums)
+
 if __name__ == "__main__":
     def binary_search(area):
         # global area
@@ -49,7 +63,7 @@ if __name__ == "__main__":
                 break
             elif search_value < numb:
                 area = area[search_index:]
-                count+=1
+                count += 1
             elif search_value > numb:
                 area = area[:search_index]
                 count += 1
@@ -57,19 +71,17 @@ if __name__ == "__main__":
 
 
     is_count = False
-    for i in range(1,10):
-        search_list =list(range(1,4000001))
+    for i in range(1, 10):
+        search_list = list(range(1, 4000001))
         count = binary_search(search_list)
         while not is_count:
             countmax = count
             countmin = count
             is_count = True
-        if count>countmax:
+        if count > countmax:
             countmax = count
-        if  count<countmin:
+        if count < countmin:
             countmin = count
 
-
-
-    print("Максимум итераций:",countmax)
-    print("Минимум итераций:",countmin)
+    print("Максимум итераций:", countmax)
+    print("Минимум итераций:", countmin)
