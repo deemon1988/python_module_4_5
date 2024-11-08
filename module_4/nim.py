@@ -1,51 +1,49 @@
+from termcolor import cprint, colored
+
 symbol = ['*']
 heap1 = symbol * 3
 heap2 = symbol * 8
 heap3 = symbol * 5
 
-heaps = [heap1,heap2,heap3]
+heaps = [heap1, heap2, heap3]
 
-print(3%2!=0)
 
-def heap(num):
-    return heaps[num-1]
+def number_heap(num):
+    heap = heaps[num - 1]
+    return heap
+
 
 def step(amount_items, n_heap):
     if n_heap == 1:
         global heap1
-        for i in range(0, amount_items):
-            heap1.remove('*')
+        heap1[:] = heap1[amount_items:]
     elif n_heap == 2:
         global heap2
-        for i in range(0, amount_items):
-            heap2.remove('*')
+        heap2[:] = heap2[amount_items:]
     elif n_heap == 3:
         global heap3
-        for i in range(0, amount_items):
-            heap3.remove('*')
- 
+        heap3[:] = heap3[amount_items:]
+
 
 def game():
     player = 0
     while '*' in heap1 or heap2 or heap3:
         player += 1
-        print(heap1, heap2, heap3)
+        print(colored(heap1, "green"), colored(heap2, "magenta"), colored(heap3, "cyan"))
         items = 0
         n_heap = 0
-        while 0 >= n_heap or n_heap > 3 :
+        while 0 >= n_heap or n_heap > 3:
             n_heap = int(input("Введите номер кучи:"))
-
-
-            if n_heap <= len(heaps) and len(heap(n_heap)) == 0:
+            if n_heap <= len(heaps) and len(number_heap(n_heap)) == 0:
                 print("Пустая куча")
                 n_heap = 0
-
-        while 0 >= items or items > len(heap(n_heap)):
+        while 0 >= items or items > len(number_heap(n_heap)):
             items = int(input("Введите кол-во предметов:"))
-        step(items,n_heap)
+        step(items, n_heap)
     if player % 2 != 0:
-        print("Первый игрок выграл")
+        cprint("Первый игрок выграл", color="blue")
     else:
-        print("Второй игрок выграл")
-game()
+        cprint("Второй игрок выграл", color="yellow")
 
+
+game()
